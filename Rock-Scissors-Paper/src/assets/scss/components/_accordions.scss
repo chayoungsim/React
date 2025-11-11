@@ -1,0 +1,45 @@
+@use '../abstracts' as *;
+
+.accordions {
+    .accordion-header{
+        border: 1px solid $border-color;
+        .accordions-trigger {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 1rem 2rem;
+            .title {
+                
+            }
+            .arrow {
+                @include flex-c;
+                width: 2.4rem;
+                height: 2.4rem;
+                &::before {
+                    content: '';
+                    display: block;
+                    @include ico(1.2rem, 0.7rem);
+                    background-image: svg(arrDown,"999999");
+                    background-size: cover;
+                }
+            }
+        }        
+    }
+    .accordions-panel {
+        border: 1px solid $border-color;
+        padding: 1rem 2rem;
+        line-height: 1.5;
+    }
+    .accordion-item {
+        &.show {
+            .accordions-trigger {
+                .arrow {
+                    &::before {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+            
+        }
+    }
+}

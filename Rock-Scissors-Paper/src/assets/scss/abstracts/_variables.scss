@@ -1,0 +1,88 @@
+$url-fonts:'../../fonts/';
+$url-imgs: '../../images/';
+
+// 폰트 크기 체계 (rem 기준)
+$font-size-base: 1.6rem;
+$font-size-xs: 1.2rem; 
+$font-size-sm: 1.4rem;
+$font-size-md: 1.6rem; 
+$font-size-lg: 1.8rem; 
+$font-size-xl: 2rem;  
+$font-size-xl2: 2.2rem;
+$font-size-2xl: 2.4rem;
+$font-size-3xl: 3.2rem;
+
+// 반응형 폰트 크기 비율 (clamp 함수용)
+$font-scale-min: 0.875;   // 최소 축소 비율
+$font-scale-max: 1.125;   // 최대 확대 비율
+
+// 폰트 크기별 clamp 값
+$font-clamp-base: clamp(1.4rem, 1.56vw, 1.6rem);
+$font-clamp-sm: clamp(1.2rem, 1.37vw, 1.4rem);
+$font-clamp-md:clamp(1.4rem, 1.56vw, 1.6rem);
+$font-clamp-lg: clamp(1.5rem, 1.76vw, 1.8rem);
+$font-clamp-desc: clamp(1.4rem, 1.76vw,1.8rem);
+$font-clamp-heading: clamp(2.4rem, 2.89vw, 4.4rem);
+
+// 라인 높이
+$line-height-normal: 1.2;
+$line-height-tight: 1.2;
+$line-height-relaxed: 1.5;
+
+$black:#000;
+$white:#fff;
+$gray22:#222;
+$gray33:#333;
+$gray44:#444;
+$gray55:#555;
+$gray66:#666;
+$gray77:#777;
+$gray88:#888;
+$gray99:#999;
+$graycc:#ccc;
+$graydd:#ddd;
+$grayde:#dedede;
+$grayda:#dadada;
+$grayd9:#d9d9d9;
+$grayef:#efefef;
+$grayf0:#f0f0f0;
+$grayf3:#f3f3f3;
+$grayf4:#f4f4f4;
+$grayf6:#f6f6f6;
+$grayf8:#f8f8f8;  
+$primary-color: #222; 
+$sub-color:#666;
+$accent-color: #0072C6; 
+$accent-light:#67b0e6;
+$accent-bg:#EAF5FD;
+$bg-light:#F0EDE7;
+$fill-hover :#0060A7;
+$dark-color:#000000; // 다크 색상
+$light-color:#dadada; // 연한 회색
+$red-color:#EA002C;
+$focus-outline:#0066cc;
+
+$height-header: 10rem;
+$height-header-mobile: 6rem;
+$transition-base: all 0.3s ease;
+
+$border-radius-sm: 0.4rem;
+$border-radius-md: 0.6rem;
+$border-radius-lg: 1rem;
+$border-color:$grayde;
+$border-color2:#e0e0e0;
+$background-gray:$grayf4;
+$background-acc:#EAF5FD;
+$btn-padding: 1rem 1.6rem;
+$btn-radius: 0.4rem;
+
+$spacings : (
+   xxs: clamp(0.6rem, 0.98vw, 1rem),
+    xs: clamp(1rem, 1.95vw, 2rem),
+    sm: clamp(2rem, 2.93vw, 3rem),
+    md: clamp(3rem, 4.88vw, 5rem),
+    lg: clamp(5rem, 7.81vw, 8rem),
+   xlg: clamp(6rem, 7.81vw, 10rem),
+  xxlg: clamp(7rem, 11.72vw, 12rem),
+);
+//margin-top: map.get($spacings, md);

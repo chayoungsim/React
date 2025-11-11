@@ -1,0 +1,585 @@
+@use '../abstracts' as *;
+input[type=text], 
+input[type=password], 
+input[type=search], 
+input[type=date], 
+input[type=number], 
+input[type=email],
+input[type=tel],
+textarea,
+.select {
+    height: 4rem;
+    border: 1px solid $light-color;
+    box-sizing: border-box;
+    padding: 1rem;
+    ::-ms-expand {
+        display: none;
+    } 
+    &.full {
+        width: 100%;
+    }
+    &[readonly] {
+        background-color: #f3f3f3;
+        color: #999;
+    }
+    @include respond(phone) {
+        padding: 0 1rem;
+        height: 5rem;
+    }
+}
+.input {
+    border-radius: 0.4rem;
+    @include respond(phone) {
+        font-size: 1.5rem;
+    }
+}
+.textar {
+    width: 100%;
+    height: 17rem;
+}
+.selectBox {
+    position: relative;
+    display: inline-block;        
+    .select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 100%;
+        padding: 0.8rem 3rem 0.8rem 1.6rem;
+        font-size: 1.6rem;
+        border: 1px solid #ccc;
+        border-radius: 0.4rem;
+        background-color: #fff;
+        background-image: none; 
+        color: $sub-color;
+        font-weight: 500;
+    }
+    &::after {
+        content: "";       
+        display: block;
+        width: 1.4rem;
+        height: 1.4rem;
+        background: url(#{$url-imgs}common/ico-select-arr.svg) no-repeat center center / contain;
+        position: absolute;
+        right: 1.6rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+    &.open::after {
+        transform: translateY(-50%) rotate(180deg); 
+    }
+    @include respond(phone) {
+        .select {
+            font-size: 1.5rem;
+            padding: 0 2rem 0 1rem;
+        }
+        &::after {
+            right: 1rem;
+        }
+    }
+}
+.checkForm {
+    display: inline-block;
+    position: relative;
+    input {
+        position: absolute;
+        left: 0;
+        width: 2.2rem;
+        height: 2.2rem;
+        cursor: pointer;
+    }
+    label {
+        position: relative;
+        display: block;
+        padding-left: clamp(2.4rem,2.93vw,3rem);         
+        line-height: clamp(1.8rem,2.15vw,2.2rem);
+        color:$sub-color;
+        font-size: clamp(1.5rem,1.56vw,1.6rem);
+        font-weight: 500;
+        &::before {
+            content: '';
+            display: block;
+            width: clamp(1.8rem,2.15vw,2.2rem);
+            height: clamp(1.8rem,2.15vw,2.2rem);        
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 0.1rem solid $gray99;
+            box-sizing: border-box;
+        }
+        &::after {
+            content: '';   
+            display: block;                
+            transform: rotate(-45deg) scale(0); 
+            transition: all 0.3s;          
+
+        }
+    }
+    input[type="checkbox"] + label {
+        &::before{
+            border-radius: 0.4rem;
+        }        
+    }
+    input[type="radio"] + label {
+        &::before{
+            border-radius: 0.4rem;
+        }
+        &::after{
+            border-radius: 50%;
+        }
+    }
+    input[type="radio"]:checked + label,
+    input[type="checkbox"]:checked + label {
+        &::before{
+            border: 0.1rem solid $accent-color;            
+            background:$accent-color url(#{$url-imgs}common/ico-form-chk.svg) no-repeat center center;
+            background-size: 1.4rem auto;
+        }
+        color:$primary-color;
+    }
+    input:focus-visible + label::before {   
+        outline: 2px solid $focus-outline;
+        outline-offset: 2px;
+    }
+    @include respond(phone) {    
+        input[type="radio"]:checked + label,
+        input[type="checkbox"]:checked + label {
+            &::before {
+                background-size: 1rem auto;
+            }           
+        }   
+    }    
+    &.only {
+        label {
+            font-size: 0;
+            padding-left: clamp(1.8rem, 2.34vw, 2.4rem);
+        }
+    }
+}
+.form-ui {
+    border-top: 2px solid $primary-color;   
+    .form-row {
+        display: flex;
+        align-items: center;
+        width:100%;
+        border-bottom: 1px solid $border-color;
+    }
+    .form-tit {        
+        padding: 1.5rem 1rem;
+        width: 25%;
+        font-size: clamp(1.5rem, 1.56vw,1.6rem);
+        >span {            
+            vertical-align: middle;            
+        }
+        em {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: $accent-color;
+            vertical-align: middle;
+            margin-left: 0.5rem;
+        }
+    }
+    .form-col {
+        flex: 1;
+        vertical-align: middle;
+        padding: 1.5rem 1rem;
+    }  
+    
+    @include respond(phone) {
+        .form-row {
+            flex-direction: column
+        }
+        .form-tit,
+        .form-col {
+            width: 100%;
+            padding-left:0;
+            padding-right:0;
+        }
+        .form-tit {
+            padding-top: 2rem;
+            padding-bottom:1rem;
+        }
+        .form-tit + .form-col {
+            padding-top: 0;
+        }
+    }
+   
+}
+.form-col {
+    &-email {
+        @include flex-sp;
+        gap: clamp(0.5rem, 0.78vw ,1rem);
+        input {
+            width:48%
+        }
+        .selectBox {
+            width:48%
+        }
+    }
+    &-phone {
+        @include flex-sp;
+        gap: clamp(0.5rem, 0.78vw ,1rem);
+        .selectBox {
+            width: 30%;
+        }
+        .input {
+            width: 33%;
+        }
+    }
+    &-date {
+        @include flex-sp;
+        gap: clamp(0.5rem, 0.78vw ,1rem);
+        .input{
+            width: 48%
+        }
+    }
+    &-datePick {
+        @include flex-sp;
+        gap: clamp(0.5rem, 0.78vw ,1rem);
+        .input {
+            width: 48%;                          
+            background: $white url(#{$url-imgs}common/ico-calendar.png) no-repeat right 1rem center;
+            &[readonly] {               
+                background: $background-gray url(#{$url-imgs}common/ico-calendar.png) no-repeat right 1rem center;
+            }
+            @include respond(phone) {                 
+                background-size: 1.6rem auto; 
+            }
+        }        
+    }
+    &-search {
+        display: flex;
+        justify-content: space-between;
+        gap: clamp(0.5rem, 0.78vw ,1rem);
+        .input {
+            width: calc(100% - 12.75%);
+        }
+        .btn-outline {
+            min-width: 12.75%;
+            border: 1px solid $gray44;   
+            color: $gray44; 
+            
+            &:hover {
+                background: transparent;
+                border:1px solid $accent-color;
+                color: $accent-color;
+            }
+        }
+        @include respond(phone) {            
+            input{
+                width: calc(100% - 28%);
+            }
+            .btn-outline{
+                width: 28%;
+                font-size: 1.5rem;
+                font-weight: 600;
+                height:5rem;
+            }
+        }
+    }
+    &-addFile {
+        display: flex;
+        justify-content: space-between;
+        gap: clamp(0.5rem, 0.78vw ,1rem);
+        position: relative;
+        .file-name-input {
+            width: calc(100% - 12rem);
+        }
+        .file-delete-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 17rem;
+            width: 1.6rem;
+            height: 1.6rem;
+            background-image: svg(close,"222222");
+            background-repeat: no-repeat;
+            font-size: 0
+        }
+        .btn-outline {
+            border: 1px solid #444;
+            color: #444;
+            &:hover {
+                border: 1px solid $accent-color;
+                color: $accent-color;
+            }
+        }
+        .real-file-input {
+            display: none;
+        }
+        @include respond(phone) {
+            .file-name-input {
+                width: calc(100% - 10rem);
+            }
+            .file-delete-btn {
+                width: 1.2rem;
+                height: 1.2rem;
+                right: 12rem;
+            }
+            .btn-outline { 
+                &.small {
+                    height: 5rem;
+                }                
+            }
+        }         
+    }
+    &-checkForms {
+        min-height: 6rem;
+        display: flex;
+        align-items: center ;
+        flex-wrap: wrap;
+        gap: 1rem 4rem;
+        @include respond(phone) {
+            min-height: 3rem;
+            gap: 1rem 3rem;           
+        }
+    } 
+}
+.radio-tabs {
+    display: flex;
+    gap: clamp(0.5rem,1.30vw,1rem);
+    .radio {
+        flex: 1;
+        label {
+            @include flex-c;
+            width: 100%;
+            height: 4rem;
+            border: 1px solid $border-color;
+            border-radius: $border-radius-sm;
+            cursor: pointer;
+            font-size: 1.6rem;
+            font-weight: 600;      
+        }
+        input {
+            position: absolute;
+            &:checked + label {
+                background-color: $accent-light;
+                border: 1px solid $accent-light;
+                color: $white;
+            }
+            &:focus-visible + label {
+                outline: 2px solid $focus-outline;
+                outline-offset: 2px;
+            }
+        }
+    }
+    @include respond(phone) {
+        .radio {
+            label {
+                height: 5rem;
+                font-size: 1.5rem;
+            }
+        }
+        
+    }
+}
+.radio-tabs + .radio-tabs-cont {
+    margin-top: 1rem;
+}
+.form-type1 {    
+    .form-tit {
+        padding-left: 5rem;
+        padding-right: 0;
+    }
+    .form-col {
+        padding-right: 15.8vw;
+    }
+    @include respond(tablet) {  
+        .form-tit {
+            padding-left: clamp(1rem, 3vw,5rem);
+            width: 24%;
+        }      
+        .form-col {
+            padding-left: 1rem;
+            padding-right: 1rem;
+           
+        }
+    } 
+    @include respond(phone) {
+        .form-row {
+            flex-direction: column;
+        }
+        .form-tit {            
+            width: 100%;
+            padding: 2rem 0 1rem;
+            em{
+                margin-left: 0.3rem;
+            }
+        }
+        .form-col {
+            width: 100%;
+            display: block;
+            padding: 1rem 0 1.5rem;
+        }
+    }
+}
+.form-type2 {
+    border-top: 0;
+    background: $background-gray;
+    border-radius: $border-radius-lg;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .form-row {
+        border-bottom: 0;
+        padding-right: 3rem;
+    }
+    .form-tit {
+        width: 27%;
+        text-align: right;
+        padding-right: 0;
+    }
+    .form-col {
+        width: calc(100% - 27%);
+    }
+
+    @include respond(mobile) {
+        display: block;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        .form-row{
+            padding-right: 0;
+        }
+        .form-tit{
+            text-align: center;
+        }
+        .form-tit,
+        .form-col{
+            padding: 1rem 2rem 1rem 2rem;
+        }
+        .form-col{
+            padding-left: 0;
+        }
+    }
+    @include respond(phone) {
+        .form-row {
+            display: block;
+        }
+        .form-tit,
+        .form-col {
+            width: 100%;
+        }
+        .form-tit {
+            text-align: left;
+        }
+        .form-col {
+            padding: 1rem 2rem;
+        }
+    }
+}
+.form-type3 {
+    border-top: 0;
+    background: $background-gray;
+    border-radius: $border-radius-lg;
+    display: flex;
+    .form-row {
+        border-bottom: 0;
+        padding-right: 3rem;
+    }
+    .form-tit {
+        width:14%;
+        text-align: right;
+    }
+    .form-col{
+        width: calc(100% - 14%);
+    }
+    @include respond(phone) {
+        .form-row {
+            padding: 0;
+            flex-direction: column;
+        }
+        .form-tit {
+            width: 100%;
+            text-align: left;
+            padding: 2rem 2rem 0;
+        }
+        .form-col{
+            width: 100%;
+            padding: 1rem 2rem 2rem;
+        }
+    }
+}
+.form-type4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid $border-color;
+    padding: 0.5rem 0;
+    .form-row {
+        border-bottom: 0;        
+    }
+    .form-tit {
+        width: 30%;
+        text-align: center;
+        padding: 1rem 2rem;
+    }
+    .form-col {
+        width: calc(100% - 30%);
+        padding: 1rem 4rem;
+        padding-left: 0;
+    }
+    @include respond(mobile) {
+        .form-tit {
+            padding: 1rem 0
+        }
+        .form-col {
+            padding: 1rem 2rem 1rem 1rem;
+        }
+    }
+    @include respond(phone) {
+        grid-template-columns: 1fr;
+        padding-bottom: 2rem;
+        .form-row {
+            flex-direction: column;
+        }
+        .form-tit,
+        .form-col {
+            width: 100%;
+            padding: 0;
+        }
+        .form-tit {
+            text-align: left;
+            padding: 2rem 0 1rem;
+        }
+    }
+}
+.form-re100ty {
+    border-top: 1px solid $primary-color;
+    .form-tit {
+        width: 16rem;
+        text-align: center;
+    }
+    .form-col {
+        width: calc(100% - 16rem);
+        padding: 1rem 2rem;
+
+        .file-delete-btn {
+            right: 18rem;
+        }
+
+        .form-col-addFile {
+            .file-name-input {
+                background: #fff;
+            }
+        }
+    }
+
+    @include respond(phone) {
+        .form-tit,
+        .form-col {
+            width: 100%;
+        }
+        .form-tit {
+            text-align: left;
+            padding-top:1.2rem;     
+        }
+        .form-col {
+            padding: 0 0 1rem;
+
+            .file-delete-btn {
+                right: 12rem;
+            }
+        }
+    }
+}

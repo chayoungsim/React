@@ -1,0 +1,31 @@
+@use '../abstracts' as *;
+@use 'sass:map';
+
+.writeQna-sect1 {
+    margin-top: clamp(1rem, 4vw, 5rem);
+    .form-tit {
+        width: 18%
+    }
+    .form-col {
+        width: calc(100% - 18%);
+    }
+
+    @include respond(phone) {        
+        .form-tit,
+        .form-col {
+            width: 100%;
+        }
+
+    }
+}
+.writeQna-sect2 {    
+    .btn-cols {
+        margin-top: clamp(4rem, 6.84vw, 7rem);
+    }
+}
+
+@include respond(mobile) {
+    .sub-required-top {
+        margin-top: 0;
+    }
+}

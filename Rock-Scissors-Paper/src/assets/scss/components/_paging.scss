@@ -1,0 +1,125 @@
+@use '../abstracts' as *;
+
+.paging {
+    @include flex-c;
+    margin-top: clamp(4rem, 4.88vw,5rem);;
+    gap: clamp(0.6rem,1.3vw,1rem);
+    .num,
+    .pn {
+        @include flex-c;
+        border: 1px solid $grayd9;
+        border-radius: 0.5rem;
+        background: $white;
+        width: clamp(3rem,3.91vw,4rem);
+        height: clamp(3rem,3.91vw,4rem);
+    }
+    .num {        
+        font-size: clamp(1.4rem, 1.76vw,1.8rem);
+        &.on {
+            background: $accent-color;
+            border: 1px solid $accent-color;
+            color: $white;
+        }       
+    }        
+    .first {        
+        em {
+            @include ico(1.2rem, 1.2rem);
+            background-image: svg(pFirst,"222222");
+            font-size: 0;
+        }
+    }
+    .prev {
+        margin-right: 1rem;
+        em {
+            @include ico(0.6rem, 1.2rem);
+            background-image: svg(pPrev,"222222");
+            font-size: 0;
+        }
+    }
+    .next {
+        margin-left: 1rem;
+        em {
+            @include ico(0.6rem, 1.2rem);
+            background-image: svg(pPrev,"222222");
+            font-size: 0;
+            transform: rotate(180deg);
+        }
+    }
+    .last {
+        em {
+            @include ico(1.2rem, 1.2rem);
+            background-image: svg(pFirst,"222222");
+            font-size: 0;
+            transform: rotate(180deg);
+        }
+    }
+    a{
+        &:hover{
+            background: $grayd9;
+        }
+    }
+}
+
+.pagination {
+    ul {
+        @include flex-c;
+        gap: clamp(0.6rem, 1.3vw, 1rem);
+        a, strong {
+            @include flex-c;
+            border:1px solid $border-color;
+            border-radius: $border-radius-sm;
+            min-width: clamp(3rem, 3.91vw, 4rem);
+            height: clamp(3rem, 3.91vw, 4rem);
+            font-size: clamp(1.4rem, 1.76vw, 1.8rem);
+        }
+        strong {
+            background: $accent-color;
+            border:1px solid $accent-color;
+            color: $white;
+        }
+        .prev {
+            margin-right: 1rem;            
+        }
+        .next {
+            margin-left: 1rem;
+        }
+        .first, .prev,
+        .next, .last {
+            font-size: 0;
+        }
+        .first {    
+            &::before {
+                content: '';
+                display: block;
+                @include ico(1.2rem, 1.2rem);
+                background-image: svg(pFirst,"222222");
+            } 
+        }
+        .prev {
+            &::before {
+                content: '';
+                display: block;
+                @include ico(0.6rem, 1.2rem);
+                background-image: svg(pPrev,"222222");
+            }
+        }
+        .next {
+            &::before {
+                content: '';
+                display: block;
+                @include ico(0.6rem, 1.2rem);
+                background-image: svg(pPrev,"222222");
+                transform: rotate(180deg);
+            }            
+        }
+        .last {
+            &::before {
+                content: '';
+                display: block;
+                @include ico(1.2rem, 1.2rem);
+                background-image: svg(pFirst,"222222");
+                transform: rotate(180deg);
+            }
+        }
+    } 
+}

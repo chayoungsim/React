@@ -1,0 +1,418 @@
+@use '../abstracts' as *;
+@use 'sass:map';
+@use 'sass:list';
+.perk-item {
+    @include flex-sp;
+    padding: clamp(2.7rem, 2.93vw, 3rem) 0;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-lg;
+    height: 100%;
+    .s-tit3 {
+        font-size: clamp(1.8rem, 2.15vw, 2.2rem);
+    }
+    .s-desc {
+        font-size: clamp(1.4rem, 1.56vw, 1.6rem);
+        line-height: 1.37;
+        margin-top: clamp(1.2rem, 1.56vw, 1.6rem);
+        padding-right: clamp(2rem, 2.73vw, 2.8rem);
+    }
+    .icon {
+        width: 27.3%;
+        height: 8rem;
+        $welfare-ico-height :(
+            87.5%,
+            80%,
+            76.25%,
+            90%,
+            89.5%,
+            75%,
+            88.75%,
+            91.25%,
+            88.75%,
+            85%,
+            87.5%,
+        );
+        @for $i from 1 through list.length($welfare-ico-height) {
+            &.ico#{$i} {
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background: url(#{$url-imgs}sub/welfare-ico#{$i}.svg) no-repeat;
+                    background-position: 50% 50%;
+                    background-size: auto list.nth($welfare-ico-height, $i);
+                }                
+            }
+        }      
+    }
+    .desc {
+        width: calc(100% - 27.3%);
+    }
+    @include respond(mobile) {
+        .icon {
+            width: 30%;
+            height: 6rem;
+        }
+        .desc {
+           width: calc(100% - 30%); 
+        }        
+    }
+}
+.perk-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    @include respond(phone) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+.welfare-sect {
+    margin-top:map.get($spacings, lg);
+    .shty2 {
+        font-size: clamp(2.2rem, 3.32vw, 3.4rem);
+        padding-bottom: clamp(1.8rem, 3.71vw, 3.6rem);
+        border-bottom: 2px solid $black;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+    .perk-items {
+        margin-top: clamp(2rem, 3.52vw, 4rem);
+    }
+}
+.p-desc + .welfare-sect {
+    margin-top:map.get($spacings, xxlg);
+}
+.cultiv-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 4rem;
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 4rem;
+        background: $border-color;
+        position: absolute;
+        top: 0;
+        left: 50%; 
+        margin-left: -0.5px;
+    }
+    h5 {
+        @include flex-c;
+        flex-direction: column;
+        border-radius: $border-radius-lg; 
+        padding: 1.4rem 0;
+        &.ty1 {
+            background: #A9DBFF;
+        }
+        &.ty2 {
+            background: #9EE9DC;
+        }
+        &.ty3 {
+            background: $graycc;
+        }
+        .icon {
+            display: block;
+            width: 3.6rem;
+            height: 3.7rem;
+        }
+        .ico1 {
+            background: url(#{$url-imgs}sub/cultiv-ico1.svg) no-repeat 50% 50%;
+            background-size: 83.33% auto;
+        }
+        .ico2 {
+            background: url(#{$url-imgs}sub/cultiv-ico2.svg) no-repeat 50% 50%;
+            background-size: 88.89% auto;
+        }
+        .ico3 {
+            background: url(#{$url-imgs}sub/cultiv-ico3.svg) no-repeat 50% 50%;
+            background-size: 100% auto;
+        }
+        .s-tit3 {
+            display: block;
+            margin-top: clamp(0.8rem, 0.98vw, 1rem);
+            font-size: clamp(1.6rem, 2.15vw, 2.2rem)
+        }
+    }
+    h6 {
+        font-size: clamp(1.6rem, 1.76vw, 1.8rem);
+        font-weight: 700;
+        padding-top: 2.6rem;
+        padding-bottom: 1.5rem;
+        border-top: 1px dashed $border-color;
+        margin-top: 2.6rem;
+        &:first-child {
+            border-top: 0;
+            margin: 0;
+            padding-top: 0;
+        }
+    }
+    .box {
+       border: 1px solid $border-color;
+       border-radius: $border-radius-lg; 
+       padding: clamp(2.6rem, 2.93vw, 3rem);
+       flex-grow: 1;       
+    }
+    .lists-dots {
+        margin-left: 0.7rem;
+        > li {
+            font-size: clamp(1.4rem, 1.76vw, 1.6rem);
+            line-height: 1.5;
+            padding-left: 0.9em;
+        }
+    }
+    .ico-arrow {
+        display: inline-block;
+        background-image: svg(arrow,"666666");
+        vertical-align: middle;
+        margin-right: 0.4rem;
+    }
+}
+.cultiv-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: clamp(2rem, 3vw, 4rem);
+    position: relative;
+    &::before {
+        content: '';
+        display: block;
+        width: 68.83%;
+        height: 1px;
+        background: $border-color;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    @include respond(phone) {
+        grid-template-columns: 1fr;
+        gap: 0;
+        &::before {
+            display: none;
+        }
+    }
+}
+.cultiv-sect {
+    margin-top: map.get($spacings, lg);
+    h4 {
+        text-align: center;
+        span {
+            display: inline-block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: $white;
+            line-height: 1.2;
+            background: $accent-color;
+            padding: clamp(2.8rem, 3.42vw, 3.5rem) clamp(4.8rem, 5.86vw, 7rem);
+            border-radius: 5rem;
+            font-size: clamp(1.6rem, 2.15vw, 2.2rem);            
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: clamp(3rem, 3.91vw, 4rem);
+            background: $border-color;
+            margin:0 auto;
+        }
+    }    
+}
+.duty-sect {
+    margin-top: map.get($spacings, lg);
+    .s-desc {
+        //line-height: 1.3;
+        p + p {
+            margin-top: 0.9rem;
+        }
+    }
+}
+.jobpos-item {
+    background: $accent-bg;
+    border-radius: $border-radius-lg;
+    @include flex-c;
+    flex-direction: column;
+    gap: 3rem;   
+    text-align: center;
+    min-height: 44rem;
+    .icon {
+        @include flex-c;
+        width: clamp(14rem, 15.63vw, 16rem);
+        aspect-ratio: 1/1;
+        background: $white;
+        border-radius: 50%;
+        $jobpps-ico-height :(
+            39.38%,
+            35.63%,
+            43.75%,
+        );
+        @for $i from 1 through list.length($jobpps-ico-height){
+            &.ico#{$i} {
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background: url(#{$url-imgs}sub/jobpps-ico#{$i}.svg) no-repeat;
+                    background-position: 50% 50%;
+                    background-size: auto list.nth($jobpps-ico-height, $i);
+                }                
+            }
+        }
+    }
+    .tx {
+        font-size: clamp(1.6rem, 1.76vw, 1.8rem);
+        font-weight: 500;
+        line-height: 1.44;
+        color: $sub-color;
+        padding-left: clamp(5rem, 6.64vw, 6.8rem);
+        padding-right: clamp(5rem, 6.64vw, 6.8rem);   
+        strong {
+            display: block;
+            font-weight: 700;
+            color: $primary-color;
+            margin-bottom: 1rem;
+        }
+        h4 {
+            font-weight: 700;
+            color: $primary-color;
+            font-size: clamp(2rem, 2.34vw, 2.4rem);
+        }
+        p {
+            margin-top: 1rem;
+        }
+        a {
+            &.hc1 {
+                text-decoration: underline;
+            }
+        }
+    }
+    @include respond(mobile) {
+        .tx {
+            padding-left: 3vw;
+            padding-right: 3vw;  
+        }       
+    }
+    @include respond(phone) {
+        .tx {
+            padding-left: 5rem;
+            padding-right: 5rem;  
+        }       
+    }
+}
+.jobpos-items {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(2rem, 3.91vw, 4rem);
+    margin-top: clamp(4rem, 5.86vw, 6rem);
+    @include respond(phone) {
+        grid-template-columns: repeat(1, 1fr);
+        .jobpos-item {
+            min-height: 38.5rem;        
+        }
+    }  
+}
+.jobpross {
+    display: flex;
+    justify-content: space-between;
+    margin-top: clamp(3rem, 7.81vw, 8rem);
+    margin-bottom: clamp(3rem, 7.81vw, 8rem);
+    &-item {
+        @include flex-c;
+        flex-direction: column;
+        width: 16.41%;
+        aspect-ratio: 1/1;
+        border: 1px solid $border-color;
+        border-radius: 50%; 
+        .icon {
+            width: 100%;
+            height: 38.10%;
+            $jobpros-ico-height :(
+                95%,
+                90%,
+                87.5%,
+                76.25%,
+                73.75%
+            );
+            @for $i from 1 through list.length($jobpros-ico-height){
+                &.ico#{$i} {
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        background: url(#{$url-imgs}sub/jobpros-ico#{$i}.svg) no-repeat;
+                        background-position: 50% 50%;
+                        background-size: auto list.nth($jobpros-ico-height, $i);
+                    }                
+                }
+            }
+        }
+        .tx {
+            font-size: clamp(1.1rem, 1.95vw, 2rem);
+            margin-top: clamp(1rem, 1.95vw, 2rem);
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        &:first-child {
+            border: 5px solid #A9DBFF;
+        }
+    }
+    .arr {
+        @include flex-c;
+    }
+    @include respond(phone) {        
+        &-item {
+            border: 0;
+            height: auto;
+            aspect-ratio: initial;
+            .icon {
+                width: 100%;
+                height: auto;
+                max-height: 15vw;
+                aspect-ratio: 1/1;                
+                border: 1px solid $border-color;
+                border-radius: 50%; 
+                padding: 3.13vw 0;
+            }
+            &:first-child {
+                border: 0;
+                .icon {
+                    border: 2px solid #A9DBFF;                
+                }
+            }
+        }
+        .arr {
+            height: 15vw;            
+        }
+        .ico-arrow-right {
+            width: 0.6rem;
+            height: 1rem;
+        }
+    }
+    @include respond(xs) {
+         &-item {
+            .icon {
+                padding: 1.2rem 0;
+            }
+         }
+    }
+}
+.jobpos-sect {    
+    .shty2 {
+        font-size: clamp(2.2rem, 3.32vw, 3.4rem);
+        padding-bottom: clamp(2rem, 3.91vw, 4rem);
+        border-bottom: 2px solid $primary-color;
+        margin-top: map.get($spacings, xxlg);
+    }
+    .s-tit2 {
+        margin-top: clamp(4rem, 5.86vw, 6rem);
+        margin-bottom: clamp(1.5rem, 1.95vw, 2rem);
+    }
+    .lists-dots {
+        margin-top: clamp(2rem, 2.93vw, 3rem);
+    }
+}

@@ -1,0 +1,1142 @@
+@use '../abstracts' as *;
+@use 'sass:list';
+
+.tb-type1 {    
+    border-top: 2px solid $primary-color;
+    thead {
+        border-bottom: 1px solid $primary-color;
+        th {
+            font-size: $font-clamp-md;
+            font-weight: 600;
+            padding: 1.6rem 0;
+        }        
+    }
+    tbody {
+        td {
+            font-size: $font-clamp-md;
+            border-bottom: 1px solid $border-color;
+            padding: 1.6rem 0.5rem;
+            text-align: center;  
+            a {
+                &.link {
+                    text-decoration: underline;
+                    color: $accent-color;
+                }
+            }            
+        }
+        .hiddenField {
+            td {
+                padding: 0;
+            }  
+        }  
+    }
+    .tb-in-btns {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        .small{
+            min-width: 7rem;
+            height: clamp(3rem,3.91vw,4rem);
+            font-size: clamp(1.3rem, 1.56vw, 1.6rem);
+            &.on{
+                background: $background-gray;
+            }
+        }
+    }
+    @include respond(phone) {
+        .tb-in-btns {
+            .small {
+                min-width: 6rem;
+            }
+        }
+    }
+  
+}
+.tb-type2 {
+    .th {
+        border-top:1px solid $primary-color;
+        border-bottom:1px solid $primary-color;
+    }    
+    .row {
+        padding: 1.6rem 0;
+        display: flex;
+        width: 100%;
+        > span {            
+            text-align: center;
+            font-size: $font-clamp-md;
+        }
+        .name,
+        .hp {
+            width:40%
+        }
+        .sel {
+            width:20%
+        }
+        .nodata {
+            width:100%;
+        }
+        .ico-check {
+            margin:0 auto;
+        }
+    }
+    .tds {
+        .row {
+            border-bottom: 1px solid $border-color;
+        }
+        li{
+            &.on {
+                .ico-check {
+                    background-image: svg(check,"0072c6");
+                }
+            }
+        }
+    }
+    
+}
+.tb-type3-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(3rem, 5.86vw, 6rem);
+    .tb-type3 {
+        flex: 1
+    }
+    @include respond(phone) {
+        display: block;
+        .tb-type3 + .tb-type3 {
+            margin-top: 2rem;
+        }
+    }
+}
+.tb-type3 {    
+    tr{
+        &:first-child {
+            th, td {
+                border-top: 2px solid $primary-color;
+            }
+        }
+    }
+    th {
+        border-right: 1px solid $border-color;
+        font-weight: 600;
+        
+    }
+    td, th {
+        border-bottom: 1px solid $border-color;
+        padding: 1.6rem 1rem;
+        font-size: $font-clamp-md;   
+    }
+    td {
+        padding-left: clamp(2rem, 2.93vw, 3rem);
+    }
+}
+.cp-number {
+    @include flex-c;
+    gap: 0.8rem;
+}
+.nodata { 
+    text-align: center;    
+    font-weight: 600;
+    font-size: clamp(1.4rem, 1.56vw, 1.6rem);
+    color: $sub-color;
+    padding: 5rem 0;
+}
+.garo-scroll{
+    overflow: hidden;
+    overflow-x: auto;
+    .tb-type1 {
+        width: 100%;
+        min-width: 100rem;
+    }
+    @include respond(phone) {
+        margin-left: -2rem;
+        margin-right: -2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+.visit-main {
+    background: url(#{$url-imgs}sub/visit-main-bg.jpg) no-repeat 50% 100%;
+    background-size: cover;
+    padding-top: clamp(5rem, 10.16vw, 13rem);
+    padding-bottom: clamp(8rem, 23.44vw, 30rem);
+}
+.visit-select {
+    @include flex-c;
+    width: 100%;
+    gap: 4rem;
+    gap: clamp(2rem,3.13vw,4rem);
+    li {
+        flex: 1;
+        a {
+            @include flex-c;           
+            flex-direction: column;
+            gap: clamp(2rem, 3.44vw, 4.4rem);
+            background: rgba(65, 67, 120, 0.30); 
+            border-radius: $border-radius-lg;
+            width: 100%;
+            height: clamp(20rem, 31.25vw ,40rem);
+            text-align: center;
+            transition: $transition-base;
+            i {
+                @include flex-c;
+                width: clamp(10rem, 15.63vw, 16rem);
+                height: clamp(10rem, 15.63vw, 16rem);
+                background: rgba(0, 0, 0, 0.10);
+                border-radius: 50%;
+                 transition: $transition-base;
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+                @for $i from 1 through 3 {
+                    &.visit-ico#{$i} {
+                        &::after {
+                        background: url(#{$url-imgs}sub/visit-ico#{$i}.svg) no-repeat 50% 50%;
+                        background-size: auto 
+                            if($i == 1, 36.88%, 43%);
+                        }
+                    }
+                }                
+            }
+            .txt {
+                font-size: clamp(1.8rem, 2.03vw, 2.6rem);
+                font-weight: 700;
+                color: $white;
+                line-height: 1.23;
+            }
+            &:hover {
+                background: $accent-color; 
+                i {
+                    background: $white; 
+                    @for $i from 1 through 3 {
+                        &.visit-ico#{$i} {
+                            &::after {
+                            background: url(#{$url-imgs}sub/visit-ico#{$i}-on.svg) no-repeat 50% 50%;
+                            background-size: auto 
+                                if($i == 1, 36.88%, 43%);
+                            }
+                        }
+                    }                    
+                }               
+            }
+        }
+    }
+    @include respond(phone) {
+        flex-direction: column;
+        li {
+            width: 70%;            
+        }
+    }
+}
+.visit-agree-box {
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    padding: clamp(1rem, 2.34vw, 3rem) clamp(1rem, 3.13vw, 4rem);
+    font-size: clamp(1.5rem, 1.76vw, 1.8rem);
+    font-weight: 500;
+    line-height: 1.77;
+    color: $sub-color;
+    max-height: 32rem;
+    overflow: hidden;
+    overflow-y: auto;
+    ol {
+        list-style-type: decimal;
+        margin-left: 2rem;
+    }
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: #ececec;
+        appearance: none;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color:#898989;
+        border-radius: 3px;
+    }
+
+    .lists-dots {
+        li {
+            line-height: 1.77;
+            font-size: clamp(1.5rem, 1.76vw, 1.8rem);
+        }
+    }
+}
+.visit-agree {
+    @include flex-sp;
+    margin-top: 3rem;
+    .checkForms {
+        display: flex;
+        gap: 2.7rem;
+    }   
+    @include respond(phone) {
+        margin-top: 1rem;
+        display: block;
+        .checkForms{
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 3rem;
+        }
+    }
+}
+.visit-title {
+    @include flex-sp;
+    align-items: flex-end;
+    .btn-outline {
+        margin-bottom: clamp(1.5rem, 1.88vw, 2.4rem);
+        min-width: 18rem;
+        border:1px solid $accent-color;
+        color: $accent-color;
+    }
+    @include respond(phone) {
+        display: block
+    }
+}
+.visit-result {
+    background: url(#{$url-imgs}sub/visit-result-bg.jpg) no-repeat 50% 100%;
+    background-size: cover;
+    margin-left: -33%;
+    margin-right: -33%;
+    margin-top: clamp(4rem, 6.25vw, 8rem);
+    padding: clamp(6rem, 11.48vw, 14.7rem) 0;
+    .desc {
+        text-align: center;
+        color: $white;
+        margin-top: 7rem;
+        .tx-lg {
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn-fill {            
+            min-width: 28rem;           
+        }
+    }
+
+    @include respond(laptop){
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+}
+.visit-process {
+    display: flex;    
+    justify-content: space-between;
+    gap: clamp(1rem, 1.32vw, 3.4rem);
+    .arr{
+        display: flex;
+        align-items: center;
+    }
+    .visit-pitem {
+        @include flex-c;
+        flex-direction: column;
+        gap: clamp(1rem, 1.76vw, 1.8rem);
+        background: rgba(39, 87, 126, 0.25);
+        border-radius: $border-radius-lg;       
+        padding: clamp(2rem, 4.69vw, 6rem) clamp(1rem, 3vw, 5.7rem) clamp(2rem, 3.91vw, 5rem);
+        width: 100%;
+        height: 100%;
+        i {
+            width: clamp(10rem, 13.67vw, 14rem);
+            height: clamp(10rem, 13.67vw, 14rem);
+            @include flex-c;
+            background: rgba(0, 0, 0, 0.10);
+            border-radius: 50%;
+            &::before {
+                content: '';
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+            $visit3-bg-pos: (50% 50%, 65% 50%, 65% 50%, 50% 50%);
+            $visit3-bg-size: (38.57% auto, 52.86% auto, 50.14% auto, 47.86% auto);
+            @for $i from 1 through 4 {
+                &.visit3-ico#{$i} {
+                    &::before {
+                        background: url(#{$url-imgs}sub/visit3-ico#{$i}.svg) no-repeat list.nth($visit3-bg-pos, $i);
+                        background-size: list.nth($visit3-bg-size, $i);
+                    }
+                }
+            }
+        }
+        .txt {
+            font-size: clamp(1.8rem,2.15vw,2.2rem);
+            font-weight: 700;
+            line-height: 1.45;
+            color: $white;
+            text-align: center;
+        }
+    }
+    .ico-arrow-right {
+        background-image: svg(pArr,"ffffff");
+    }
+    .on {       
+        .visit-pitem {
+            background: $accent-color;
+            i {
+                background: $white;
+                @for $i from 1 through 4 {
+                    &.visit3-ico#{$i}::before {
+                        background-image: url(#{$url-imgs}sub/visit3-ico#{$i}-on.svg);
+                    }
+                }
+            }
+        }
+    }
+    @include respond(phone) {
+        flex-direction: column;
+        margin: 0 5rem;
+        .arr {
+            justify-content: center;
+            i {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
+.visit-result2 {
+    margin-top: 5rem;
+    .lists-dots {
+        li {
+            font-size: $font-clamp-md;
+            font-weight: 500;
+            line-height: 1.87;
+            &::before{
+                top: 0.7em;
+            }
+        }
+    }
+}
+.visit-bottom {
+    margin-top: clamp(4rem,6.84vw,7rem);
+    position: relative;
+    .paging {
+        margin: 0;
+    }
+    .btn-fill {
+        position: absolute;
+        right:0;
+        top:0;
+    }
+
+    @include respond(tablet) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(3rem,3.91vw,4rem);;
+        position: initial;
+        .btn-fill {
+            position: initial;
+        }
+    }
+}
+.visit-sect-tit{
+    margin-top: clamp(4rem, 6.25vw,8rem);
+    margin-bottom: clamp(1.6rem, 1.95vw, 2rem);
+    .shty3 {        
+        margin:0
+    }
+    .tx-lg {
+        color: $sub-color;
+        margin-top: 1rem;
+    }
+}
+.visit-sect-search{    
+    
+    .form-type1{
+        margin-top: 2rem;
+    }
+    .tb-type1{
+        border-top: 2px solid $primary-color;
+        min-width: 92rem;
+        .btn-outline{
+            &.small{
+                min-width: 10rem;
+            }
+        }
+    }  
+}
+.visit-sect-states {
+    display: flex;
+    gap: clamp(2rem, 3vw,5rem);
+    margin-top: clamp(1rem,2.34vw,2.4rem);
+    .state1,
+    .state2,
+    .state3 {
+        font-size: $font-clamp-md;
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background: $red-color;
+            border-radius: 50%;
+            margin-right: 0.6rem;
+        }
+    }
+    .state1{
+        color: $red-color;
+        &::before {            
+            background: $red-color;
+        }
+    }
+    .state2{
+        color: $accent-color;
+        &::before {           
+            background: $accent-color;
+        }
+    }
+    .state3{
+        color: $gray99;
+        &::before {           
+            background: $gray99;
+        }
+    }   
+    .tx-md{
+        color: $sub-color;
+    }
+    @include respond(mobile){
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+.visit-total {
+    margin-top: clamp(3rem,5.86vw,6rem);
+    margin-bottom: clamp(1rem,2.34vw,2.4rem);;
+    color: $sub-color;
+    @include flex-sp;
+    strong {
+        font-weight: 700;
+    }
+}
+.s-apply,
+.s-approve,
+.s-reject,
+.s-green,
+.s-purple {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: clamp(5rem, 7.81vw, 8rem);
+    height: 3rem;
+    border-radius: 3rem;
+    color: $white;
+    font-size: clamp(1.2rem, 1.46vw, 1.5rem);
+}
+.s-apply {
+    background: $red-color;
+}
+.s-approve { 
+    background: $accent-color;
+}
+.s-reject {
+    background: $gray99
+} 
+.s-green {
+    background: green;
+}
+.s-purple {
+    background: purple;
+}
+
+
+.companion-title {
+    @include flex-sp;
+    border-top: 2px solid $primary-color;
+    padding: 2rem 0;
+    .tx-lg {
+        color:$sub-color;
+    }
+    .btn-outline {
+        min-width: 15rem;
+        border: 1px solid $accent-color;
+        color: $accent-color;
+    }
+    @include respond(mobile) {    
+        flex-direction: column;    
+        .btn-outline {            
+            margin-top: 1rem;
+            width: 100%;
+        }
+    }
+}
+.companion-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    @include respond(phone) {
+        grid-template-columns: 1fr;
+        gap: 2rem; 
+    }
+}
+.companion-item {
+    background: $background-gray;
+    border-radius: $border-radius-lg;
+    padding-top:clamp(5rem, 7.13vw, 7.3rem);
+    padding-bottom:clamp(4rem, 3.91vw, 4rem);
+    position: relative;
+    .ico-close {
+        position: absolute;
+        top: 2.2rem;
+        right: 3.2rem;
+        width: 2rem;
+        height: 2rem;
+    }
+    .form-ui {
+        border-top: 0;
+        margin-top: 0;
+    }
+    .form-row {
+        border-bottom: 0;
+    }
+    .form-tit {
+        padding-left: 3rem;
+        padding-right: 0;
+        width: 27%;
+    }
+    .form-col {
+        width:calc(100% - 27%);
+        padding-right: 2.7rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
+    }
+    .form-col-search {
+        .input {
+            width:calc(100% - 21.99%);
+        }
+        .btn-outline {
+            width: 19.62%;
+        }
+    }
+    .radio-tabs {
+        .radio {            
+            label {
+                border: 1px solid $gray99;
+                color: $sub-color;
+            }
+        } 
+    }
+    @include respond(laptop) {
+        .form-tit {
+            width: 29%
+        }
+        .form-col {
+            width: calc(100% - 29%);
+        }
+    }
+
+    @include respond(tablet) {
+        .form-row {
+            display: block;
+        }
+        .form-tit,
+        .form-col {
+            display: block;
+            width: 100%;
+            padding: 1rem 2rem;
+        }
+        .form-col {
+            padding-top: 0;
+        }
+    }
+}
+.search-graybox {
+    background: $background-gray;
+    border-radius: $border-radius-lg;
+    padding: 1.5rem 4rem;
+    @include respond(phone) {
+        padding: 2rem;
+    }
+}
+.visit-popup1 {
+    .garo-scroll{
+        margin-top: clamp(1rem, 2.93vw, 3rem);
+        .tb-type1 {
+            min-width: 90rem;
+        }
+    }
+    .name-search2{
+        margin-top: clamp(2rem, 4.88vw, 5rem);
+        .tx-lg {
+            margin-bottom: 1rem;
+        }
+    }
+    @include respond(phone) {
+        .name-search + .shty4 {
+            margin-top: 4rem;
+        }
+        .name-search2 {
+            .tx-lg {
+                margin-top: 3rem;
+            }
+        }
+    }
+}
+.visit-popup2 {
+    .popup-tab {
+        margin: 4rem 0 2rem;
+    }
+}
+.adLogin-form {
+    background:#EAF5FD;
+    border-radius: $border-radius-lg;
+    @include flex-c;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 6rem 39rem;
+    .input {
+        width: 100%;
+        height: 6rem;
+    }
+    .chk {
+        width: 100%;
+    }
+    .btn-fill {
+        width: 100%;
+        margin-top: 3rem;
+    }
+
+    @include respond(laptop) {
+        padding: 6rem 20.31vw;
+    }
+    @include respond(mobile) {
+        padding: 4rem;
+    }
+    @include respond(phone) {
+        padding: 4rem 2rem;
+        .input {
+            height: 5rem;
+        }
+    }
+}
+.hiddenField {    
+    .form-row {
+        background: $background-gray;        
+        padding: 1.5rem;
+        @include flex-c;
+    }    
+    .form-tit {
+        font-weight: 600;
+    }
+    .form-col {
+        display: flex;
+    }
+    .form-col-datePick {
+        margin: 0 1rem 0 2rem;
+        .input{
+            background-color: $white;
+        }
+    }    
+    .btn-fill {
+        min-width: 7rem;        
+        background: $accent-light;
+    }
+    @include respond(mobile) {
+        .form-col-datePick {
+            width: 29rem;
+        }
+    }
+    @include respond(phone) {
+        .btn-fill {
+            height:5rem;
+        }
+    }
+}
+.visit-sect-search {
+    @include flex-sp;
+    margin:2.4rem 0 2rem;
+    .form-col-search {
+        width:39rem;
+        .input{
+            width: calc(100% - 25.64%);
+        }
+        .btn-outline {
+            width:25.64%;
+        }
+    }
+}
+.enter-sect1-tit {
+    display: flex;
+    justify-content: space-between;
+    .visit-sect-tit {
+        margin-top: 0;
+    }
+    @include respond(phone) {    
+        align-items: center;    
+        .btn-outline {
+            min-width: 10rem;
+        }
+    }
+}
+.dboard-wrap {
+    @include flex-sp;
+    gap:6rem;
+    margin-top: 2rem;
+    .dboard {
+        @include flex-sp;
+        gap: 1rem;
+        flex: 1;        
+        .tit {
+            @include flex-c;
+            width: 15rem;
+            background: $accent-color;
+            color: $white;
+            height: 4rem;
+            border-radius: $border-radius-sm;
+            font-size: $font-clamp-md;
+        }
+        .con {
+            width: calc(100% - 15rem);
+            border: 1px solid $border-color;
+            border-radius: $border-radius-sm;
+            padding: 1rem;
+            text-align: right;
+            color: $accent-color;
+            height: 4rem;
+            font-size: $font-clamp-md;
+            font-weight: 700;
+        }
+    } 
+    @include respond(phone) {        
+        gap: 1rem;
+        .dboard {
+            .tit {
+                width: 8rem;
+            }
+            .con {
+                width: calc(100% - 8rem)
+            }
+        }
+    }
+}   
+.visit-enter-search {
+    margin-top: clamp(2rem, 4.88vw, 5rem);
+    background: $background-gray;
+    border-radius: $border-radius-lg;
+    padding: clamp(2rem, 2.93vw,3 rem);
+    .form-ui {
+        border: 0;
+    }
+    .form-row {
+        border: 0;
+        align-items: flex-start;        
+    }
+    .form-row + .form-row {
+        margin-top: 2rem;
+    }
+    .form-tit {
+        padding-top: 2rem;
+        width: 17%;
+    }
+    .form-col {
+        padding: 1rem;
+        width: calc(100% - 17%);
+    }
+    .form-col-datePick {
+        margin-top: clamp(1rem, 1.95vw, 2rem);
+        .input {
+            background-color: #fff;
+        }
+    }    
+    .radio-tabs {
+         .radio {
+             label {
+                color:$sub-color;
+             }
+         }
+    }
+
+    .form-row {
+        &.form-row-search {
+            margin-top: 0
+        }
+    }
+  
+
+    @include respond(phone) {
+        .form-row {
+            flex-direction: column;
+            .form-tit,
+            .form-col {
+                width: 100%;
+                padding: 0;
+            }
+            .form-tit {
+                margin-bottom: 1rem;
+            }
+            &.form-row-search {
+                margin-top: 2rem
+            }
+        }  
+        
+        .search-has-select {
+            .btn-outline {
+                height: 5rem;
+            }
+        }
+    }
+}
+.search-has-select {
+    @include flex-sp;
+    margin-top: clamp(1rem, 1.95vw, 2rem); 
+    gap: clamp(0.5rem, 1.30vw, 1rem);   
+    .select-input {
+        display: flex;
+        gap: 1rem;
+        width: calc(100% - 11rem);
+    }  
+    .selectBox {
+        width: 19rem;
+    }
+    .btn-outline {
+        min-width: 10rem;
+        border: 1px solid $primary-color;
+    }
+    .input {
+        width: calc(100% - 19rem);
+    }
+    @include respond(phone) {
+        display: block;
+        margin-top: 1rem; 
+        .select-input {
+            justify-content: space-between;
+            width: 100%;
+        }
+        .selectBox {
+            width:35%;
+        }
+        .input {
+            width: calc(100% - 35%);
+        }
+        .btn-outline {
+            min-width: 100%;
+            margin-top: 2rem;
+        }
+    }
+}
+.visit-search-result {
+    .tb-in-btns {
+        .btn-outline {
+            &.small {
+                min-width: clamp(7rem, 9.77vw, 10rem);
+            }
+        }
+    }
+}
+
+.enterList-tab {
+    @include flex-c;
+    overflow: hidden;
+    overflow-x: auto;
+    margin-top: clamp(3rem, 5.86vw, 6rem);
+    .sub-tab {
+        width: 100%;
+    }
+    li {
+        flex: 1;
+        button {
+            width: 100%;
+        }
+    }
+
+    @include respond(mobile) {
+        margin-left: -2rem;
+        margin-right: -2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        .sub-tab {
+           justify-content: flex-start;
+            li {
+                button {
+                    width: 15rem;
+                }
+            }
+        }
+    }
+}
+.enterList-tab-conts {
+    > div {
+        display: none;
+        &.active {
+            display: block
+        }
+    }
+}
+.form-datePick-search {
+    @include flex-sp;    
+    .select-datepick {
+        display: flex;
+        gap: 1rem;
+        width: calc(100% - 11rem);
+    }
+    .selectBox {
+        width: 19rem;
+    }
+    .form-col-datePick {
+        margin-top: 0;
+        width: calc(100% - 20rem);
+    }
+    .btn-outline {
+        min-width: 10rem;
+        border: 1px solid $primary-color;
+    }
+    @include respond(tablet) {
+        .selectBox {
+            width: 14rem;
+        }
+        .form-col-datePick {
+            width: calc(100% - 15rem);
+        }        
+        .select-datepick {
+            width: calc(100% - 9rem);
+        }
+        .btn-outline {
+            min-width: 8rem;
+        }
+    }
+    @include respond(phone) {
+        display: block;
+        .select-datepick {
+            width: 100%;
+            display: block;
+        }
+        .selectBox {
+            width:100%;
+        }
+        .form-col-datePick {
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .btn-outline {
+            min-width: 100%;
+            margin-top: 2rem;
+            height: 5rem;
+        }
+    }
+}
+.enterList-sect1-lists {
+    .tb-type1 {
+        min-width: 102rem;
+    }
+    @include respond(phone) {
+        .btn-outline {
+            min-width: 10rem;
+        }
+    }    
+}
+.enterList-sect2 {    
+    .visit-enter-search {
+        margin-top: 0;
+    }
+    .garo-scroll {
+        margin-top: clamp(2rem, 4.88vw,5rem);
+        .tb-type1 {
+            min-width: 100rem;
+        }
+    }
+}
+.enter-sect1 {
+    .btn-cols {
+        flex-wrap: wrap;
+    }
+
+    @include respond(tablet) {
+        .btn-outline {
+            min-width: 10rem;;
+        }
+    }
+    
+}
+.enter-sect2 {
+    .tb-type3 {
+        th {            
+            box-sizing: border-box;
+        } 
+    }
+}
+
+.approve-sect1 {
+    .shty3{
+        margin-top: 0;
+    }
+}
+.approveList-sect2 {
+    .btn-cols {
+        justify-content: flex-end;
+        margin-top: clamp(2rem, 2.34vw, 2.4rem);
+        gap:1rem;
+    }
+    .visit-sect-search {
+        gap: 1rem;        
+    }
+
+    @include respond(phone) {
+        .visit-sect-search {
+            .btn-outline {
+                &.small {
+                    height: 5rem;
+                }
+            }
+        }   
+        .btn-cols {
+            .btn-outline {
+                &.small {
+                    height: 5rem;
+                }
+            }
+        }
+    }    
+}
+.popup-download-reson {
+    text-align: center;
+    .btn-cols {
+        margin-top: clamp(2rem, 2.93vw, 3rem);
+    }
+}
+.popup-cellphone {   
+    margin-top: clamp(-2rem, -2.64vw, -2.7rem);
+    .form-col-search {
+        .btn-outline {
+            width: 35%;
+        }
+        .input {
+            width: calc(100% - 35%)
+        }
+    }    
+}
+
+/*calendar*/
+.flatpickr-calendar.arrowTop:after, 
+.flatpickr-calendar.arrowTop:before,
+.flatpickr-calendar.arrowBottom:before, 
+.flatpickr-calendar.arrowBottom:after {
+    display: none;
+}
+.flatpickr-months {
+    .flatpickr-month {        
+        height: 5rem;
+        .flatpickr-current-month {
+            font-size: 120%;
+            height: 100%;
+            padding:0;
+            @include flex-c;
+            color: $black;
+        }
+    }
+}
+.flatpickr-months .flatpickr-prev-month, 
+.flatpickr-months .flatpickr-next-month {
+    height: 5rem;
+    @include flex-c;
+}
+span.flatpickr-weekday {
+    color: $black;
+}
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange, .flatpickr-day.selected:focus, .flatpickr-day.startRange:focus, .flatpickr-day.endRange:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.endRange.nextMonthDay {
+    background-color: $accent-color;
+    border-color : $accent-color;
+}

@@ -1,0 +1,122 @@
+
+@use "./variables" as v;
+@use "sass:math";
+@use './responsive' as r;
+@use './typography' as typo;
+
+@mixin flex-c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-sp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin ellipsis($line-cnt: 1, $line-height: 1.3) {
+    @if $line-cnt == 1 {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    } @else {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: $line-cnt;
+        -webkit-box-orient: vertical;
+        word-wrap: break-word; 
+        line-height: $line-height;
+        height: math.div($line-height * $line-cnt, 2rem); 
+    }
+}
+
+@mixin button-base{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;    
+    line-height: 1.1;    
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    text-decoration: none;
+    border: none;    
+    border-radius: v.$border-radius-sm;
+}
+
+@mixin button-medium{
+    min-width:16rem;
+    height: 5rem;
+    font-size: clamp(1.4rem, 1.56vw, 1.6rem);  
+    font-weight: 700;   
+}
+
+@mixin button-large{
+    font-size: clamp(1.5rem, 1.76vw, 1.8rem); 
+    height: 6rem;
+    min-width: 20rem;
+    border-radius: 0.6rem;
+    font-weight: 700;   
+}
+
+@mixin button-small{
+    font-size: clamp(1.4rem, 1.56vw, 1.6rem); 
+    height: 4rem;   
+    font-weight: 600;
+}
+
+@mixin button-black{
+    border:1px solid $gray44;
+    color:$gray44;
+    background:$white;
+}
+
+@mixin ico($width:2.4rem, $height:2.4rem){
+    display: block;
+    width:$width;
+    height:$height;   
+    vertical-align: middle;
+    background-repeat: no-repeat; 
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+@mixin focus-visible {
+    &:focus-visible {
+      outline: 2px solid $focus-outline;
+      outline-offset: 2px;
+    }
+}
+  
+@mixin dimGradient($deg: 0deg, $color: rgba(0, 0, 0, 0.5)){
+    -webkit-mask-image: linear-gradient($deg, $color 0%, $color 100%);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-image: linear-gradient($deg, $color 0%, $color 100%); 
+    mask-repeat: no-repeat;
+    mask-size: cover;
+}
+
+@mixin lists-dots($fsize:1.6rem,$fColor:#666){
+    >li{
+        position: relative;
+        padding-left:0.75em;
+        line-height: 1.5;
+        font-size:$fsize;
+        font-weight: 500;
+        color:$fColor;
+        &:before{
+            content: '';
+            display: block;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: $fColor;
+            position: absolute;
+            top:0.6em;
+            left:0.1em;            
+        }
+        
+    }
+}

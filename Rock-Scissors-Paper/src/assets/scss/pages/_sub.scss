@@ -1,0 +1,613 @@
+@use '../abstracts' as *;
+@use 'sass:map';
+#contents {
+    &.sub {
+        padding-top: $height-header;
+        overflow: hidden;
+        @include respond(tablet) {
+            padding-top: $height-header-mobile;
+        }
+    }    
+}
+.sub-contents {
+    padding-bottom:clamp(8rem, 7.81vw, 10rem);
+}
+.sub-required-top {
+    margin-top: -5.8rem;
+    .required {    
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: $accent-color;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+    }
+}
+.breadcrumb {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4rem;
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        max-width: 132rem;
+        width: 100%;
+        margin: 0 auto;
+        padding-left: clamp(2rem, 1.39vw, 2rem);
+        padding-right: clamp(2rem, 1.39vw, 2rem);
+        gap: 1rem;
+        li{
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            color:$sub-color;
+            line-height: 1;
+            letter-spacing: -0.4px;            
+            &:not(:first-child) {
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 0.8rem;
+                    height: 1.2rem;
+                    background-image: svg(pArr,"cccccc");
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+
+    @include respond(tablet) {
+        display: none;
+    }
+}
+.sub-title {
+    font-size: clamp(3rem, 3.95vw, 6rem);
+    font-weight: 700;
+    color: $primary-color;
+}
+.sub-title2 {
+    font-size: clamp(4rem, 3.95vw, 6rem);
+    font-weight: 700;
+    color: $primary-color;
+}
+
+[lang="en"] {
+    .sub-title2 {
+        font-size: clamp(3.6rem, 3.95vw, 6rem);
+    }
+}
+
+.sub-desc {
+    font-size: clamp(1.6rem, 1.45vw, 2.2rem);
+    color: $primary-color;
+    line-height: 1.45;
+}
+.sub-top-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    padding-top: clamp(5rem, 7.03vw, 9rem);
+    padding-bottom: clamp(3rem, 3.91vw, 5rem);
+    padding-left: 2rem;
+    padding-right: 2rem; 
+    text-align: center;
+}
+
+.shty1 {
+    font-size: clamp(2.2rem, 4.39vw, 4.5rem);
+    font-weight: 700;
+}
+.shty2 {
+    font-size: clamp(3rem, 3.52vw, 3.6rem);
+    font-weight: 700;
+}
+.shty3 {
+    font-size: clamp(2.1rem, 1.71vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: clamp(4rem, 6.25vw,8rem);
+    margin-bottom: clamp(1rem, 1.95vw, 2rem);
+}
+.shty4 {
+    font-size: clamp(1.8rem, 1.95vw, 2rem);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: clamp(2rem, 2.93vw, 3rem);
+    margin-bottom: clamp(1rem, 1.76vw, 1.8rem);
+}
+.shty5 {
+    font-size: clamp(1.8rem, 2.73vw, 2.8rem);
+    font-weight: 700;
+}
+
+.s-tit0 {
+    font-size: clamp(1.8rem, 2.93vw, 3rem);
+    line-height: 1.33;
+    font-weight: 500;
+    strong {
+        font-weight: 800;
+    }
+    @include respond(phone) {
+        line-height: 1.44;
+    }
+}
+
+.s-tit1 {
+    font-size: clamp(2.2rem, 2.73vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.36;
+}
+.s-tit2 {
+    font-size: clamp(1.8rem, 2.34vw, 2.4rem);
+    font-weight: 700;
+}
+.s-tit3 {
+    font-size: clamp(1.5rem, 2.15vw, 2.2rem);
+    font-weight: 700;
+}
+.s-desc {    
+    font-size: $font-clamp-desc;
+    color: $sub-color;
+    line-height: 1.5;
+    sub {
+        font-size: 0.55em
+    }
+}
+.gray-box {
+    background: $background-gray;
+    border-radius: $border-radius-lg;
+}
+.agree-box{
+    border: 1px solid $border-color;
+    padding: clamp(2rem, 2.93vw, 3rem) clamp(2rem, 3.91vw, 4rem);
+    font-size: $font-clamp-lg;
+    border-radius: $border-radius-sm;
+    margin-top: clamp(2rem, 3.91vw, 4rem);
+    li{
+        margin-top: 1rem;
+        color: $sub-color;
+    }
+}
+.agree-check{
+    text-align: center;
+    margin-top: clamp(2rem, 3vw,5rem);
+    @include respond(phone) {
+        text-align: left;
+    }
+}
+.hc1{
+    color: $accent-color;
+}
+.hc2{
+    color: $black;
+}
+.tx-sm {
+    font-size: $font-clamp-sm;
+    font-weight: 700;
+}
+.tx-md{
+    font-size: $font-clamp-md;
+    font-weight: 500;
+}
+.tx-lg{
+    font-size: $font-clamp-lg;
+    line-height: $line-height-relaxed;
+    font-weight: 500;    
+}
+.tx-base {
+    font-size: clamp(1.4rem, 1.56vw, 1.6rem);
+    color: $sub-color;
+}
+.tx-base2 {
+    font-size: clamp(1.3rem, 1.76vw, 1.8rem);
+    color: $sub-color;
+    line-height: 1.6;
+}
+.tx-base3 {
+    font-size: clamp(1.4rem, 1.76vw, 1.8rem);
+    color: $sub-color;
+    line-height: 1.6;
+}
+.tx-base4 {
+    font-size: clamp(1.4rem, 1.76vw, 2rem);
+    font-weight: 600;
+}
+.p-desc {
+    font-size: clamp(1.5rem, 2.15vw, 2.2rem);
+    line-height: 1.45;
+}
+.tx-desc1 {
+    font-size: clamp(1.6rem,2.34vw,2.4rem);
+    font-weight: 600;
+    color: $primary-color;
+    line-height: 1.4;
+}
+.tx-desc2 {
+    font-size: clamp(1.5rem,1.95vw,2rem);
+    font-weight: 500;
+    color: $black;
+    line-height: 1.4;
+}
+.tx-desc3 {
+    font-size: clamp(1.4rem,1.76vw,1.8rem);
+    font-weight: 500;
+    line-height: 1.6;
+    color: $sub-color;
+}
+.tx-desc4 {
+    font-size: clamp(1.3rem,1.56vw,1.6rem);
+    font-weight: 500;
+    line-height: 1.6;
+    color: $sub-color;
+}
+.shty1 + .p-desc {
+    margin-top: clamp(2rem, 4.88vw,5rem);
+}
+.s-tit1 + .tx-desc3 {
+    margin-top: clamp(2rem,2.34vw,2.4rem);
+}
+
+.s-tit1 + .s-desc {
+    margin-top: clamp(2rem, 2.34vw, 3rem);
+    line-height: 1.667
+}
+.s-tit1 + .net-zero-ment {
+    margin-top: clamp(2rem, 3.91vw,4rem);
+}
+.lists-dots{
+    @include lists-dots($font-clamp-lg, $gray66);
+    @include respond(phone) {
+        > li { 
+            &:before{
+                width: 3px;
+                height: 3px;
+            }
+        }        
+    }
+}
+.p-astr{
+    position: relative;
+    font-size: clamp(1.4rem, 1.05vw, 1.4rem);
+    color: $sub-color;
+    line-height: 1.5; 
+    padding-left: 1.2rem;
+    margin-top: 0.7rem;
+    &::before {
+        content: '* ';
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+.p-noti {
+    position: relative;
+    font-size: clamp(1.4rem, 1.05vw, 1.4rem);
+    color: $sub-color;
+    margin-top: 0.7rem;
+    line-height: 1.5; 
+    padding-left: clamp(2rem, 2.44vw, 2.5rem);   
+    font-weight: 500;
+    &::before {
+        content: '';
+        display: block;
+        width: clamp(1.6rem, 1.76vw, 1.8rem);
+        height: clamp(1.6rem, 1.76vw, 1.8rem);
+        background-image: svg(noti,"0072C6");
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;        
+    }
+    @include respond(laptop) {
+         &::before {
+            top: 0.1rem
+         }
+    }
+    @include respond(phone) {
+         &::before {
+            top: 0.16rem
+         }
+    }
+}
+.p-dots {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: clamp(1.4rem, 1.56vw, 1.6rem);
+    color: $sub-color;
+    line-height: 1.5;
+    margin-top: map.get($spacings, xs);
+    &::before {
+        content: '';
+        display: block;
+        width: 3px;
+        height: 3px;
+        background: $sub-color;
+        border-radius: 50%;
+        position: absolute;
+        top: 1rem;
+        left: 0.2rem;    
+    }  
+}
+.sub-steps {
+    @include flex-c;
+    gap: 3rem;
+    margin-top: clamp(4rem, 6.25vw, 8rem);
+    @include respond(phone) {
+        > div {
+            display: none;
+            &.active {
+                display: flex;
+                flex-direction: initial
+            }
+        }
+    }
+}
+.sub-step {
+    @include flex-c;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+    flex: 1;
+    padding: 2rem;
+    border-radius: $border-radius-lg;
+    background: $background-gray;
+    font-weight: 700;
+    &-t1 {
+        font-size: 1.6rem;;
+    }
+    &-t2 {
+        font-size: clamp(1.6rem, 1.45vw, 2.2rem);
+    }
+    &.active {
+        background: $accent-color;
+        color: $white;
+    }
+}
+.sub-lnb {
+    position: relative;
+    z-index: 2;
+    button {
+        display: none;
+    }
+    nav {
+        @include flex-c;
+    }
+    .lnb {
+        display: flex;        
+        li {            
+            width:20rem;
+            a {
+                @include flex-c;
+                font-size: clamp(1.8rem, 2.15vw, 2.2rem);
+                color: $sub-color;
+                height: 7rem;
+            }
+            &.active {
+                a {
+                    position: relative;
+                    color: $accent-color;
+                    font-weight: 700;
+                    &::before {
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        height: 4px;
+                        background: $accent-color;
+                        position: absolute;
+                        left:0;
+                        bottom:0;
+                    }
+                }
+            }
+        }
+    }
+    .active {
+        nav {
+            border-top: 1px solid $border-color;
+        }
+    }
+    @include respond(laptop) {
+        .lnb {
+            flex: 1;
+            width: 100%;
+            li {
+                width: 100%;
+            }
+        }
+    }   
+    @include respond(tablet) {
+        .static {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        button {
+            position: relative;
+            display: block;
+            font-size: clamp(1.8rem, 2.86vw, 2.2rem);
+            font-weight: 700;
+            width: 100%;
+            text-align: left;
+            padding:1.8rem 2rem;
+            &::after {
+                content: '';
+                @include ico(2.2rem, 1.2rem);
+                background-image: svg(arrDown,"222222");
+                background-size: contain;
+                position: absolute;
+                right:2rem;
+                top:2.5rem;
+                transition: all 0.3s ease-out;
+            }
+        }
+        nav {
+            background: $background-gray;
+            padding:1.8rem 0;
+            position: absolute;
+            z-index:9999;
+            width:100%;
+            display: none;
+        }
+        .lnb {
+            flex-direction: column;
+            width: 100%;
+            li {                
+                width: 100%;
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding: 0.8rem 2.5rem;
+                    font-size: clamp(1.5rem, 2.08vw, 1.6rem);
+                    height: auto;
+                    color: $primary-color;                    
+                }
+                &.active {
+                    a { 
+                        font-weight: 700;
+                        color: $accent-color;
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        .active {
+            button {
+                &::after {
+                    transform: rotate(180deg);
+                }
+            }
+            nav {
+                display: block;
+            }
+        }
+    }
+}
+[lang="en"] {
+    .sub-lnb {
+        .lnb {
+            width: 100%;
+            li {
+                width: 20%;
+            }
+        }
+
+        @include respond(mobile) {
+            .lnb {
+                li {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+.sub-visual {
+    height: clamp(28rem, 48.83vw, 50rem);
+    .static {
+        height: 100%;
+        @include flex-c;
+        text-align: center;
+        color: $white;
+        font-size: clamp(1.6rem, 2.15vw, 2.2rem);
+        line-height: 1.45;
+        font-weight: 500;
+    }
+    $vs-images :(
+        "sub-vs-summary",
+        "sub-vs-brand",
+        "sub-vs-history",
+        "sub-vs-elecnotice",
+        "sub-vs-family",
+        "sub-vs-esg",
+        "sub-vs-she",
+        "sub-vs-ethical",
+        "sub-vs-report",
+        "sub-vs-value",
+        "sub-vs-winwin",
+        "sub-vs-lng",
+        "sub-vs-renewable",
+        "sub-vs-hydrogen",
+        "sub-vs-energy",
+        "sub-vs-gener",
+        "sub-vs-gas",
+        "sub-vs-welfare",
+        "sub-vs-cultivation",
+        "sub-vs-duty",
+        "sub-vs-job",
+    );
+
+    @each $class in $vs-images {
+        &.#{$class} {
+            background: url(#{$url-imgs}sub/#{$class}.jpg) no-repeat 50% 50%;
+            background-size: cover;
+        }
+        @include respond(phone) {
+            height: 28rem;
+            &.#{$class} {
+                background: url(#{$url-imgs}sub/#{$class}-mo.jpg) no-repeat 50% 50%;
+                background-size: cover;
+            }
+        }
+    }    
+}
+.sub-visual + .breadcrumb {
+    margin-top: 4rem;
+}
+.sub-ment-box {
+    background: $accent-bg;
+    border-radius: $border-radius-lg;
+    padding: 5rem 2rem;
+    text-align: center;
+    font-size: clamp(1.6rem,2.54vw,2.6rem);
+    font-weight: 700;
+    line-height: 1.38;    
+    @include respond(mobile) {
+        padding: 3.5rem 4rem;
+    }
+}
+
+[lang="en"] {
+    .sub-ment-box {
+        font-size: clamp(1.6rem,2.54vw,2.2rem);
+    }
+}
+
+
+.sub-ment-box + .shty1 {
+    margin-top: clamp(4rem, 7.81vw, 8rem);
+}
+.section {
+    @include respond(tablet) {        
+        padding-top:4rem;
+    }
+}
+picture {
+    width: 100%;
+    img {
+        width: 100%;;
+    }
+}
+
+.mg-top {
+    margin-top: clamp(7rem, 11.72vw, 12rem);
+}
+
+[lang="en"] {
+    .sub-lnb {
+        .lnb {
+            li {
+                a {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

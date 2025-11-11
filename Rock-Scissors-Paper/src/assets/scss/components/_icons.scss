@@ -1,0 +1,105 @@
+@use '../abstracts' as *;
+
+.ico{    
+    &-youtube{
+        @include ico(2.4rem, 1.9rem);
+        background-image: svg(youtube,"000000");
+        background-size: contain;
+    }
+    &-instagram{
+        @include ico(2.1rem, 2.1rem);
+        background-image: svg(instagram,"000000");
+        background-size: contain;
+    }
+    &-linkedin{
+        @include ico(2.1rem, 2.1rem);
+        background-image: svg(linkedin,"000000");
+        background-size: contain;
+    }
+    &-facebook{
+        @include ico(2.1rem, 2.1rem);
+        background-image: svg(facebook,"000000");
+        background-size: contain;
+    }   
+    &-link-open{
+        @include ico(1.6rem, 1.7rem);
+        background-image: svg(linkOpen,"999999");
+        background-size: contain;
+    }
+    &-arrow{
+        @include ico(1.5rem, 1.2rem);
+        background-image: svg(arrow,"ffffff");
+        background-size: cover;
+    }
+    &-arrDown{
+        @include ico(1.2rem, 0.7rem);
+        background-image: svg(arrDown,"999999");
+        background-size: cover;
+    }
+    &-close{
+        @include ico(3rem, 3rem);
+        background-image: svg(close,"222222");
+        background-size: cover;
+    }
+    &-plus{
+        @include ico(1.4rem, 1.4rem);
+        background-image: svg(plus,"555555");
+        background-size: cover;
+    }
+    &-sns{
+        @include ico(2.8rem, 2.8rem);
+        background-image: svg(sns,"222222");
+        background-size: contain;
+    }
+    &-arrEnd{
+        @include ico(1.8rem, 1.6rem);
+        background-image: svg(arrEnd,"ffffff");
+        background-size: contain;
+    }
+    &-home{
+        @include ico(1.6rem, 1.6rem);
+        background-image: svg(home,"666666");
+        background-size: contain;
+    }
+    &-arrow-right{
+        @include ico(1.4rem, 2.4rem);
+        background-image: svg(pArr,"666666");
+        background-size: contain;
+    }
+    &-noti{
+        @include ico(1.9rem, 1.9rem);
+        background-image: svg(noti,"0072C6");
+        background-size: cover;
+    }
+    &-check{
+        @include ico(2rem, 2rem);
+        background-image: svg(check,"dddddd");
+        background-size: contain;
+    }
+    &-fire {
+        @include ico(1.3rem, 1.9rem);
+        background-image: svg(fire,"999999");
+        background-size: contain;
+    }
+    &-electricity {
+        @include ico(1.2rem, 2rem);
+        background-image: svg(electricity,"999999");
+        background-size: contain;
+    }
+    &-H2 {
+        @include ico(1.6rem, 1.2rem);
+        background-image: svg(H2,"999999");
+        background-size: contain;
+    }
+    &-LNG {
+        @include ico(2.8rem, 1.3rem);
+        background-image: svg(LNG,"999999");
+        background-size: contain;
+    }
+    &-down {
+        @include ico(1.6rem, 1.7rem);
+        background-image: svg(down,"0072c6");
+        background-size: cover;
+    }
+}
+
