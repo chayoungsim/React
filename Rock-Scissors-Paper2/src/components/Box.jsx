@@ -1,8 +1,7 @@
 
 import RockImg from "../assets/images/hand-rock.png";
 
-function Box(props){
-    
+function Box(props){    
     let result;
     if(
         props.title === "Computer" &&
@@ -14,7 +13,6 @@ function Box(props){
     } else {
         result = props.result;
     }
-
 
     return(
         <div className={`box ${result}`}>
