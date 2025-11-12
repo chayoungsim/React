@@ -1,0 +1,22 @@
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.dice-wrap {
+  text-align: center;
+}
+.dice-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  margin-top: 2rem;  
+}
+
+.board {
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  padding:2rem 4rem;
+  width: 20rem;
+ }
